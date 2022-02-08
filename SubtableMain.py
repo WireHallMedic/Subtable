@@ -1,6 +1,4 @@
-import os
 import re
-import random
 from SubtableConstants import *
 from TableObj import *
 

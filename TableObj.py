@@ -1,4 +1,3 @@
-#import os
 import re
 import random
 from SubtableConstants import *
@@ -13,26 +12,26 @@ class STTable:
       """ Add a string, which may be a name, entry, or subtable call """
       # if the entry is a list, call the appropriate method
       if re.search("\n", entry):
-         self.addList(entry)
+         self.add_list(entry)
          return
       # ignore empty strings
       if len(entry.strip()) == 0:
          return
       # set table name if name
-      if re.search(titleRegex, entry):
+      if re.search(title_regex, entry):
          self.name = entry[1:]
       # ignore comments, otherwise add
-      elif not re.search(commentRegex, entry):
+      elif not re.search(comment_regex, entry):
          self.list.append(entry)
    
-   def addList(self, entries):
+   def add_list(self, entries):
       """ Add a list of entries """
       # if the list is a single entry, call the appropriate method
       if not re.search("\n", entries):
          self.add(entries)
          return
-      lineList = entries.split("\n")
-      for element in lineList:
+      line_list = entries.split("\n")
+      for element in line_list:
          self.add(element)
    
    def roll(self):
@@ -50,14 +49,14 @@ class STTable:
          print(item)
 
 if __name__ == "__main__":
-   testTable = STTable()
+   test_table = STTable()
    print("- Initial state")
-   testTable.dump()
-   testTable.add("#NAME ONE\nEntry 1\nEntry 2\nEntry 3\n// comment\nEntry 4\n\n")
-   testTable.add("Entry 5\n#NAME TWO")
+   test_table.dump()
+   test_table.add("#NAME ONE\nEntry 1\nEntry 2\nEntry 3\n// comment\nEntry 4\n\n")
+   test_table.add("Entry 5\n#NAME TWO")
    print("\n- new state")
-   testTable.dump()
+   test_table.dump()
    print("\n- Random rolls")
-   print(testTable.roll())
-   print(testTable.roll())
-   print(testTable.roll())
+   print(test_table.roll())
+   print(test_table.roll())
+   print(test_table.roll())
