@@ -1,4 +1,5 @@
 // A tables file for Subtable.py
+// Very heavily based on an article in Dragon Magazine #289
 
 #MAIN
 [ADJECTIVE] [FIGHTING]
