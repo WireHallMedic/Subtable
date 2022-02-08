@@ -1,6 +1,6 @@
 import re
 import random
-from SubtableConstants import *
+from subtable_constants import *
 
 
 class STTable:

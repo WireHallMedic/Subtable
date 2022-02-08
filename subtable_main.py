@@ -2,8 +2,8 @@
 
 import sys
 import re
-from SubtableConstants import *
-from TableObj import *
+from subtable_constants import *
+from table_obj import *
 
 class TableController:
 
