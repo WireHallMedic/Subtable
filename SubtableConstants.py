@@ -1,0 +1,3 @@
+commentRegex = "^//"
+titleRegex = "^#"
+subtableCallRegex = "\[*.\]"
