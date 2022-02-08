@@ -34,36 +34,38 @@ class TableController:
       """ Main calling method. Generates an entry from the master list, then 
       fills in the subcalls.
       """
-      pass
+      out_str = self._get_initial_string()
+      out_str = self.replaceTableCalls(out_str)
+      return out_str
    
-   def __get_initial_string(self):
+   def _get_initial_string(self):
       if len(self.tableDict) == 0:
          return "EMPTY DICTIONARY"
       return self.main_table.roll()
    
    def getTable(self, str):
       """ Get the table with matching name """
-      # strip octothorpe if present
-      if re.match(titleRegex, str):
-         str = str[1:]
-      if re.match(subtableCallRegex, str):
-         str = str.replace("[", "")
-         str = str.replace("]", "")
+      str = self.clean_table_name(str)
       if str in self.tableDict:
          return self.tableDict[str]
-      return "[NO TABLE NAMED '{}' EXISTS]".format(str)
+      return "NO TABLE NAMED '{}' EXISTS".format(str)
    
+   def clean_table_name(self, str):
+      str = str.replace("[", "")
+      str = str.replace("]", "")
+      str = str.replace("#", "")
+      return str
+      
    def replaceTableCalls(self, str):
       """ 
       Replaces the first instance of a subtable call with an entry from that table.
       Recursively calls self until no more subtable calls are found.
       """
       match = re.search(subtableCallRegex, str)
-      if match is not Null:
+      if match is not None:
          # extract matching string
-         trigger_str = str[match.start:match.end]
-         new_str = self.getReplacement(trigger_str)
-         str = str.replace(trigger_str, new_str)
+         new_str = self.getReplacement(match.group())
+         str = str.replace(match.group(), new_str, 1)
          return self.replaceTableCalls(str)
       return str
    
@@ -84,6 +86,5 @@ class TableController:
 
 if __name__ == "__main__":
    test = TableController("TestText.txt")
-   test.dump()
-   print(test.getTable("PANTS"))
+   print(test.roll())
    
