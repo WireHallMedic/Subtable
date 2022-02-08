@@ -1,0 +1,16 @@
+// Test file for develpoment. This is a comment.
+
+#MAIN
+[TABLE A] [TABLE A]
+
+#TABLE A
+[TABLE B]
+[TABLE C]
+
+#TABLE B
+B
+b
+
+#TABLE C
+C
+c
