@@ -1,3 +1,3 @@
-commentRegex = "^//"
-titleRegex = "^#"
-subtableCallRegex = r"\[([^\]\n]+)\]"
+comment_regex = "^//"
+title_regex = "^#"
+subtable_call_regex = r"\[([^\]\n]+)\]"
