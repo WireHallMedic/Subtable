@@ -91,6 +91,14 @@ class TableController:
       for key in self.table_dict:
          print()
          self._get_table(key).dump()
+   
+   
+   def summary(self):
+      """ Testing and debugging method """
+      print("Number of tables: {}".format(len(self.table_dict)))
+      for key in self.table_dict:
+         print()
+         self._get_table(key).summary()
       
 
 if __name__ == "__main__":

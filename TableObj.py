@@ -51,6 +51,12 @@ class STTable:
          print("[NO ENTRIES]")
       for item in self.list:
          print(item)
+   
+   
+   def summary(self):
+      """ Testing/debug method """
+      print(self.name)
+      print("Entries: {}".format(len(self.list)))
 
 
 if __name__ == "__main__":
