@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+
+import sys
 import re
 from SubtableConstants import *
 from TableObj import *
@@ -91,6 +94,11 @@ class TableController:
       
 
 if __name__ == "__main__":
-   test = TableController("TestText.txt")
-   print(test.roll())
+   if len(sys.argv) == 1:
+      test = TableController("TestText.txt")
+      print(test.roll())
+   else:
+      table = TableController(sys.argv[1])
+      for i in range(5):
+         print(table.roll())
    
